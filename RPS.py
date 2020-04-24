@@ -1,36 +1,41 @@
-import random
+from random import randint
 
-computer_asn = random.choice(["Rock","Paper","Scissors"])
+t = ["Rock","Paper","Scissors"]
 
-Rock = "Rock"
-Paper = "Paper"
-Scissors ="Scissors"
+computer_asn = t[randint(0,2)]
+
 print(computer_asn)
 #User Inputs 
-#print("Welcome To Rock, Paper, and Scissors")
-#User_Choice = input("Enter Your Choice: ")
+User_Choice = False
+while User_Choice == False:
+    
+    print("Welcome To Rock, Paper, and Scissors")
+    User_Choice = input("Rock, Paper, Scissors? ")
 
+    
 
+    if User_Choice == computer_asn:
+        print("Tie")
+    elif User_Choice == "Rock":
+        if computer_asn == "Paper":
+            print("You Lose! ",computer_asn,"covers ",User_Choice)
 
-# Rock Paper Scissors Logic 
-if Rock > Scissors and computer_asn == Rock :  
-    print("You have Beaten Scissors" + computer_asn)
-elif Rock < Paper and computer_asn == Rock :
-    print("You have lost" + computer_asn)
-elif Rock == Rock and computer_asn == Rock :
-    print(" Its a Tie " + computer_asn)
+        else:
+            print("You win!", User_Choice,"smashes",computer_asn)
 
-if Paper > Rock and computer_asn == Paper :
-    print("You have beaten Rock " + computer_asn)
-elif Paper < Scissors and computer_asn == Paper :
-    print("You have lost to Scissors " + computer_asn)
-elif Paper == Paper and computer_asn == Paper :
-    print("Its a Tie " + computer_asn)
+    elif User_Choice == "Paper":
+        if computer_asn == "Scissors":
+            print("You lose!",computer_asn, "cut", User_Choice)
+        else:
+            print("You win!", User_Choice, "Covers", computer_asn)
 
-if Scissors > Paper and computer_asn == Scissors :
-    print("You Have Beaten Paper " + computer_asn)
-elif Scissors < Rock and computer_asn == Scissors :
-    print("You have Lost to The Rock " + computer_asn)
-elif Scissors == Scissors and computer_asn == Scissors :
-    print("Its a Tie " + computer_asn)
-     
+    elif User_Choice == "Scissors":
+        if computer_asn == "Rock":
+            print("You lose...",computer_asn,"smashes",User_Choice)
+        else:
+            print("You Win", User_Choice,"cut",computer_asn)
+    else:
+        print("Thats not a valid play. check your spelling!")
+
+    User_Choice = False
+    computer_asn = t[randint(0,2)]
